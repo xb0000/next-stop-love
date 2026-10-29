@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f5ed">
+  <meta name="description" content="一张双人车票，一段由你选择的恋爱故事。下一站，心动。">
+  <title>下一站，心动 · 小楠与阿雨</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=3">
+  <link rel="stylesheet" href="./polish.css?v=3">
+  <script src="./story.js?v=3" defer></script>
+  <script src="./game-core.js?v=3" defer></script>
+  <script src="./scenes.js?v=3" defer></script>
+  <script src="./app.js?v=3" defer></script>
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+    <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="15" rx="4"/><path d="M5 11h14M12 3v8M8 21l2-3m6 3-2-3M8 15h.01M16 15h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><path d="M12 8c-7-11-13 1-5 3-12 1-4 12 2 5 0 12 12 5 6-1 11 5 10-8 2-7 6-9-7-10-5 0Z"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M4 8h12v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Zm12 1h2a3 3 0 0 1 0 6h-2M7 2v3m5-3v3"/></symbol>
+    <symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0ZM12 3v16a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16M3 4c4-1 7 0 9 2 2-2 5-3 9-2v15c-4-1-7 0-9 2-2-2-5-3-9-2Z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="8" cy="7" r="3"/><circle cx="16" cy="17" r="3"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 8l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 6h4l2-3h4l2 3h4a2 2 0 0 1 2 2v11H2V8a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C7 2 2 8 5 15c3 7 16 6 15-12ZM4 21 16 8"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 7a7 7 0 0 1 12-1l2 6M4 12l2 6a7 7 0 0 0 12-1"/></symbol>
+  </defs></svg>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="下一站，心动 首页"><span class="brand-icon"><svg><use href="#i-train"/></svg><b>♥</b></span><span>下一站，心动<small>NEXT STOP, LOVE</small></span></a>
+    <nav aria-label="主要导航"><button id="story-tab" class="nav-link active">我们的故事</button><button id="album-tab" class="nav-link">回忆手册 <span id="memory-count">0</span></button></nav>
+    <div class="header-actions"><button id="music-button" class="icon-button music-button" aria-label="开启背景音乐" aria-pressed="false"><svg><use href="#i-music"/></svg><span>音乐关</span></button><span class="nav-divider"></span><button id="settings-button" class="icon-button" aria-label="游戏设置"><svg><use href="#i-settings"/></svg></button></div>
+  </header>
+  <main>
+    <section class="page-intro"><div><div class="eyebrow"><span></span> 春日慢车 · 双人恋爱物语</div><h1>把偶然，写成<span>我们。</span><svg><use href="#i-heart"/></svg></h1><p>世界很大，幸好这一站，身边是你。</p></div><div class="intro-note"><svg><use href="#i-leaf"/></svg><span>不必着急抵达<br>喜欢会沿途发生</span></div></section>
+    <div class="game-layout">
+      <aside class="sidebar">
+        <div class="route-card"><div class="section-label"><span>心动路线</span><small id="route-fraction">01 / 05</small></div><div class="route-list" id="route-list"></div><div class="route-foot"><span class="small-dot"></span> 每个选择，都有回响</div></div>
+        <div class="ticket"><div class="ticket-top"><svg><use href="#i-train"/></svg><span>仅此一程 · 双人车票</span></div><div class="ticket-places"><span>初次相遇<small>THE BEGINNING</small></span><svg><use href="#i-arrow"/></svg><span>你的身边<small>TOGETHER</small></span></div><div class="ticket-dash"></div><div class="ticket-bottom"><span>座位 <b>05 · 20</b></span><span class="barcode" aria-hidden="true"></span><span>♡ × 2</span></div></div>
+        <div class="sidebar-note"><svg><use href="#i-book"/></svg><p id="save-status">故事自动保存<br><span>下次见面，从这里继续。</span></p></div>
+      </aside>
+      <section class="game-main" aria-label="恋爱故事游戏">
+        <div class="scene-wrap" id="scene-wrap">
+          <div class="scene" id="scene" data-scene="train"><div id="scenery" class="scenery"></div><div class="scene-shade"></div><div class="scene-top"><span class="location-pill" id="location-label"><svg><use href="#i-train"/></svg> 开往春天的列车</span><span class="scene-time" id="scene-time">15:20 · 晴</span></div>
+            <div class="scene-quote" id="scene-quote"><span>A LITTLE LOVE STORY</span><h2>同一趟列车，<br>不同的心跳。</h2><i>— 故事，从你们开始 —</i></div>
+            <div class="couple" id="couple"><div class="character character-a" tabindex="0" role="button" aria-label="和小楠互动" data-person="a"><div class="character-shadow"></div><div class="chibi-body"><div class="neck"></div><div class="jacket"><div class="zipper"></div><div class="pocket p-left"></div><div class="pocket p-right"></div></div><div class="arm arm-l"></div><div class="arm arm-r"></div><div class="leg leg-l"></div><div class="leg leg-r"></div><div class="shoe shoe-l"></div><div class="shoe shoe-r"></div></div><div class="photo-head head-a"><img src="./assets/original-front.jpg" alt="图二人物的原照头像" draggable="false"></div><div class="name-tag" id="character-name-a">小楠<span>☀</span></div><div class="speech-bubble" id="bubble-a"></div></div>
+              <div class="between-hearts" aria-hidden="true"><span>♥</span><span>♥</span><span>✧</span></div>
+              <div class="character character-b" tabindex="0" role="button" aria-label="和阿雨互动" data-person="b"><div class="character-shadow"></div><div class="chibi-body"><div class="neck"></div><div class="jacket"><div class="zipper"></div><div class="pocket p-left"></div><div class="pocket p-right"></div></div><div class="arm arm-l"></div><div class="arm arm-r"></div><div class="leg leg-l"></div><div class="leg leg-r"></div><div class="shoe shoe-l"></div><div class="shoe shoe-r"></div></div><div class="photo-head head-b"><img src="./assets/original-together.jpg" alt="图一眼镜人物的原照头像" draggable="false"></div><div class="name-tag" id="character-name-b">阿雨<span>☁</span></div><div class="speech-bubble" id="bubble-b"></div></div></div>
+            <span class="scene-bottom-note" id="scene-bottom-note">轻点人物，听听他的悄悄话</span><button class="photo-button" id="photo-button" aria-label="查看你们的原照片"><svg><use href="#i-camera"/></svg></button><div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="rain" aria-hidden="true"></div>
+          </div>
+          <div class="scene-caption"><span><i></i> 两个人的，慢慢来</span><span id="chapter-caption">PROLOGUE · 故事的起点</span></div>
+          <div class="interaction-dock" aria-label="和他的小互动"><span class="interaction-label">试着再靠近一点</span><div><button data-moment="near" aria-pressed="false"><svg><use href="#i-heart"/></svg>靠近一点</button><button data-moment="hand" aria-pressed="false">碰碰手</button><button data-moment="whisper">悄悄话<span>↗</span></button></div></div>
+          <p class="moment-message" id="moment-message" role="status">有些喜欢，藏在你来我往的小动作里。</p>
+        </div>
+        <div class="story-utility"><span id="player-role">你将以小楠的视角，回应阿雨的心意</span><button id="history-button"><svg><use href="#i-book"/></svg>回看对白</button></div>
+        <div class="story-panel" id="story-panel" aria-live="polite"></div>
+        <div class="relationship-bar"><div class="partner-avatars"><div class="mini-avatar avatar-a"><img src="./assets/original-front.jpg" alt=""></div><div class="mini-avatar avatar-b"><img src="./assets/original-together.jpg" alt=""></div></div><div class="relationship-title"><b id="relationship-title">刚刚好的相遇</b><span id="relationship-sub">两条平行线，开始有了交集。</span></div><div class="stat affection"><span><svg><use href="#i-heart"/></svg> 心动 <b id="affection-value">0</b></span><div class="stat-track"><i id="affection-bar"></i></div></div><div class="stat trust"><span><svg><use href="#i-star"/></svg> 默契 <b id="trust-value">0</b></span><div class="stat-track"><i id="trust-bar"></i></div></div></div>
+      </section>
+    </div>
+    <footer><span>一张双人车票，一段只属于你们的故事。</span><span>MADE FOR TWO <span class="footer-heart">♡</span></span></footer>
+  </main>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-top"><span id="modal-eyebrow">NEXT STOP, LOVE</span><button class="icon-button" id="close-modal" aria-label="关闭弹窗"><svg><use href="#i-close"/></svg></button></div><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
